@@ -32,6 +32,28 @@ gem 'spring',        group: :development
 
 gem 'puma'
 
+#paging
+gem 'kaminari'
+
+#testData生成
+# group :test do
+#   gem 'faker'
+# end
+
+#debugTool
+group :test,:development do
+  gem 'byebug'
+end
+
+gem 'devise'
+
+gem 'haml-rails'
+
+#session_store
+# gem 'activerecord-session_store'
+
+#comment_on_tables and columns
+gem 'migration_comments', '~> 0.3.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

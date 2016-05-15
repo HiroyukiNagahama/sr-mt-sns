@@ -6,7 +6,14 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  root 'welcome#index'
+  #root 'welcome#index'
+  #devise_for :users,controllers: {sessions: "users/sessions",registrations: "users/registrations",password: "users/passwords"},path_names: { sign_in: "login",sign_out: "logout"}
+  # match 'devises/session#destroy' => 'devise/sessions#new', via:[:get]
+  #root 'home#login_check'
+  # match '/'=>'home#index', via:[:get]
+  #match '/auth/yconnect/callback' => 'shop#callback_test', via:[:get,:post,:patch] #戻り先
+  match ':controller(/:action(/:id))', via: [ :get, :post, :patch,:put,:delete]
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

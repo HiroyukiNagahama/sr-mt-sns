@@ -1,0 +1,45 @@
+.borderTableTitle{sytle: "margin:20px;"}
+  %h1
+    = "武蔵野タイガース：#{@record.ev_date}"
+
+.borderCards{style: "margin:20px;"}
+  .row
+    .col-xs-8
+      .borderCard
+        %header.borderCard__header
+          .borderCard__form-item{style: "margin-left:10px;"}
+            = "日付:[#{@record.ev_date}]"
+          .borderCard__form-item{style: "margin-left:10px;"}
+            = "場所:[#{@record.event_place}]"
+          .borderCard__form-item{style: "margin-left:10px;"}
+            = @record.is_notify?
+
+%table.borderTable{style: "width:80%;margin:20px;"}
+  %tr
+    %th
+    %th 出席者（○）
+    %th 保留中（△）
+    %th 欠席者（×）
+    %th 未登録者
+  %tr
+    %th
+      = "メンバー"
+    %td
+      = @event_joins[:ok]
+    %td
+      = @event_joins[:pending]
+    %td
+      = @event_joins[:ng]
+    %td
+      = @event_joins[:no]
+  %tr
+    %th
+      = "人数合計"
+    %td
+      = @event_joins[:ok].size
+    %td
+      = @event_joins[:pending].size
+    %td
+      = @event_joins[:ng].size
+    %td
+      = @event_joins[:no].size

@@ -1,0 +1,47 @@
+.borderTableTitle{sytle: "margin:20px;"}
+  %h1 武蔵野タイガース：スケジュール
+.borderCards{style: "margin:20px;"}
+  .row
+    .col-xs-8
+      .borderCard
+        %header.borderCard__header
+          = form_tag '/event/index' do
+            .borderCard__form-item{style: "margin-left:10px;"}
+              = "日付"
+            .borderCard__form-item
+              =text_field_tag :event_date
+            .borderCard__form-item{style: "margin-left:10px;"}
+              = "場所"
+            .borderCard__form-item
+              = text_field_tag :event_place
+            .borderCard__form-item{style: "margin-left:10px;"}
+              = "通知フラグ"
+            .borderCard__form-item
+              = select_tag(:notify_flag,options_for_select([["通知済",true],["未通知",false]]),include_blank: true,style: "width:200px;")
+            .borderCard__form-item{style: "margin-left:10px;"}
+              = submit_tag "検 索", class: "btn btn-primary btn-sm"
+
+
+%table.borderTable{style: "width:80%;margin:20px;"}
+  %tr
+    %th 日時
+    %th 場所
+    %th メモ
+    %th 通知
+    %th 詳細
+    %th 全員に通知する
+
+  - @records.each do |record|
+    %tr
+      %td
+        = record.ev_date
+      %td
+        = record.event_place
+      %td
+        = record.memo
+      %td
+        = record.is_notify?
+      %td
+        = link_to '詳細確認',{action: :show,id: record.id },include_blank: true
+      %td
+        = "メール通知"
