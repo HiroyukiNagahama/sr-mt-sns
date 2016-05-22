@@ -1,0 +1,32 @@
+.borderTableTitle{sytle: "margin:20px;"}
+  %h1
+    = "武蔵野タイガース：スケジュール作成"
+
+.borderCards{style: "margin:20px;"}
+  .row
+    .col-xs-4
+      .borderCard
+        %div.borderCard__body
+          = form_tag 'create' do
+            %div{style: "margin-left:20px;"}
+              = "日付"
+              .borderCard__form-item
+                = date_select_text(:event, :e_date)
+            %div.borderCard__form-item{style: "margin-left:50px;"}
+              .borderCard__form-item
+                = text_field_tag "event[start_time]",(@event.start_time if @event),{style: "width:100px;"}
+              = "時〜"
+              .borderCard__form-item
+                = text_field_tag "event[end_time]",(@event.end_time if @event),{style: "width:100px;"}
+              = "時"
+            %div{style: "margin-left:20px;"}
+              = "場所"
+              .borderCard__form-item
+                =text_field_tag "event[event_place]",(@event.event_place if @event),{style: "width:300px;"}
+            %div{style: "margin-left:20px;"}
+              = "メモ"
+              .borderCard__form-item
+                = text_area_tag "event[memo]", (@event.memo if @event), :size => "40x5"
+            %br
+            %div{style: "margin-left:20px;"}
+              = submit_tag "作 成", class: "btn btn-primary btn-sm"

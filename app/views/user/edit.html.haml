@@ -1,0 +1,40 @@
+.borderTableTitle{sytle: "margin:20px;"}
+  %h1
+    = "武蔵野タイガース：メンバー情報編集"
+
+.borderCards{style: "margin:20px;"}
+  .row
+    .col-xs-4
+      .borderCard
+        %div.borderCard__body
+          = form_tag '/user/save' do
+            = hidden_field_tag "user[id]",(@user.id if @user)
+            %div{style: "margin-left:20px;"}
+              = "名前"
+            .borderCard__form-item
+              =text_field_tag "user[name]",(@user.name if @user),{style: "width:300px;"}
+            %div{style: "margin-left:20px;"}
+              = "コード"
+            .borderCard__form-item
+              =text_field_tag "user[code]",(@user.code if @user),{style: "width:300px;"}
+            %div{style: "margin-left:20px;"}
+              = "e-mail"
+            .borderCard__form-item
+              =text_field_tag "user[email]",(@user.email if @user),{style: "width:300px;"}
+            %div{style: "margin-left:20px;"}
+              = "pass"
+            .borderCard__form-item
+              =password_field_tag "user[password]",nil,{style: "width:300px;"}
+            %div{style: "margin-left:20px;"}
+              = "pass_conf"
+            .borderCard__form-item
+              =password_field_tag "user[password_confirmation]",nil,{style: "width:300px;"}
+            - if current_user.manager
+              %div{style: "margin-left:20px;"}
+                = "管理者フラグ"
+              .borderCard__form-item
+                = check_box_tag("manager" , [true], checked = (@user.manager if @user))
+            %br
+            %br
+            %div{style: "margin-left:20px;"}
+              = submit_tag "更 新", class: "btn btn-primary btn-sm"

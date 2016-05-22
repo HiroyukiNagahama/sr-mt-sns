@@ -9,7 +9,7 @@
             .borderCard__form-item{style: "margin-left:10px;"}
               = "日付"
             .borderCard__form-item
-              =text_field_tag :event_date
+              =date_select_text :event,:e_date
             .borderCard__form-item{style: "margin-left:10px;"}
               = "場所"
             .borderCard__form-item
@@ -17,7 +17,7 @@
             .borderCard__form-item{style: "margin-left:10px;"}
               = "通知フラグ"
             .borderCard__form-item
-              = select_tag(:notify_flag,options_for_select([["通知済",true],["未通知",false]]),include_blank: true,style: "width:200px;")
+              = select_tag(:is_notify,options_for_select([["通知済",true],["未通知",false]]),include_blank: true,style: "width:200px;")
             .borderCard__form-item{style: "margin-left:10px;"}
               = submit_tag "検 索", class: "btn btn-primary btn-sm"
 
@@ -45,3 +45,5 @@
         = link_to '詳細確認',{action: :show,id: record.id },include_blank: true
       %td
         = "メール通知"
+
+=paginate @records,outer_window: 4,window: 4

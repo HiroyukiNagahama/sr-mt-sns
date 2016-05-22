@@ -1,17 +1,27 @@
 Rails.application.routes.draw do
-  resources :widgets
+  devise_for :users, path_names: { sign_in: "login", sign_out: "logout"}
+  # devise_scope :user do
+  #   root :to => "devise/sessions#new"
+  # end
 
+
+  resources :widgets
+  # devise_for :users,controllers: {sessions: "users/sessions",registrations: "users/registrations",password: "users/passwords"},path_names: { sign_in: "login",sign_out: "logout"}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
 
-  #root 'welcome#index'
+  # root to: "home#index"
   #devise_for :users,controllers: {sessions: "users/sessions",registrations: "users/registrations",password: "users/passwords"},path_names: { sign_in: "login",sign_out: "logout"}
   # match 'devises/session#destroy' => 'devise/sessions#new', via:[:get]
   #root 'home#login_check'
   # match '/'=>'home#index', via:[:get]
   #match '/auth/yconnect/callback' => 'shop#callback_test', via:[:get,:post,:patch] #戻り先
+  root 'home#index'
+  get 'home/index'
+
+  get 'home/show'
   match ':controller(/:action(/:id))', via: [ :get, :post, :patch,:put,:delete]
 
 

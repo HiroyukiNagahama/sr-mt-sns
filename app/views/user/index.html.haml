@@ -1,0 +1,25 @@
+.borderTableTitle{sytle: "margin:20px;"}
+  %h1 武蔵野タイガース：メンバー
+
+%table.borderTable{style: "width:80%;margin:20px;"}
+  %tr
+    %th 名前
+    %th email
+    %th 最終ログイン日時
+    %th 項目
+
+  - @users.each do |user|
+    %tr
+      %td
+        = user.name
+      %td
+        = user.email
+      %td
+        = user.last_sign_in_at
+      %td
+        - if current_user.manager
+          %div.borderCard__form-item{style: "margin-left:20px;"}
+            = link_to '編集',{action: :edit,id: user.id },include_blank: true
+          %div.borderCard__form-item{style: "margin-left:20px;"}
+            = link_to '削除',{action: :destroy_record,id: user.id },data: {confirm: "削除しますがよろしいでしょうか？"}
+

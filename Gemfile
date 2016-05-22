@@ -49,9 +49,6 @@ gem 'devise'
 
 gem 'haml-rails'
 
-#session_store
-# gem 'activerecord-session_store'
-
 #comment_on_tables and columns
 gem 'migration_comments', '~> 0.3.2'
 # Use Capistrano for deployment
@@ -59,4 +56,7 @@ gem 'migration_comments', '~> 0.3.2'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+#session_store
+gem 'activerecord-session_store'
 

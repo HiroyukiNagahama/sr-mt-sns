@@ -1,8 +1,17 @@
 class Event < ActiveRecord::Base
 
+  validates_presence_of :e_date,:start_time,:end_time,:event_place
+
+  scope :find_date, -> e_date {where(e_date: e_date) if e_date.present?}
+  scope :find_place, -> place {where(arel_table[:event_place].matches("%#{place}%")) if place.present?}
+  scope :find_notify, -> is_notify {where(notify_flag: is_notify) if [true,false,"true","false"].include?(is_notify)}
+  scope :sort_desc, -> {order('e_date desc')}
+
+  paginates_per 30
+
   #表示日時
   def ev_date
-    (event_date + Rational(9, 24)).strftime('%Y-%m-%d %H:%M:%S')
+    e_date.to_s + ("  %02d:00 時 〜 %02d:00 時" % [start_time,end_time])
   end
 
   #表示名称
@@ -16,7 +25,7 @@ class Event < ActiveRecord::Base
     time = DateTime.now
     60.times do |i|
       name = (i%3 == 0 ? '東村山' : '府中の森')
-      Event.create({event_place: name, event_date: time + 10, memo: "テスト#{i}", notify_flag: i.even? ? false : true})
+      Event.create({event_place: name, e_date: Date.today,start_time: time,end_time: time + 10, memo: "テスト#{i}", notify_flag: i.even? ? false : true})
     end
   end
 end
