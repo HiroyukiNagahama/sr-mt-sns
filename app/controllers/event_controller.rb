@@ -28,8 +28,6 @@ class EventController < ApplicationController
 
   private
   def find_records
-    p "asdfdsad"
-    p params[:is_notify]
     @records = Event.
         find_date(params[:event] && params[:event][:e_date]).
         find_place(params[:event_place]).

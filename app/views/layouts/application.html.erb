@@ -32,7 +32,7 @@
           </li>
       <% end %>
       <li class="active">
-        <a href="/event_user/attendance?user_id=<% current_user.id%>"><span class="glyphicon glyphicon-home"></span>出欠席</a>
+        <a href="/user_event/index?user_id=<% current_user.id%>"><span class="glyphicon glyphicon-home"></span>出欠席</a>
       </li>
       <!--<li>-->
       <!--<a href="https://devcenter.heroku.com/articles/how-heroku-works"><span class="glyphicon glyphicon-user"></span>-->
@@ -65,10 +65,10 @@
               <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
               <li class="divider"></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-              <li><%= link_to "サインイン", new_user_registration_path %></li>
-              <li class="divider"></li>
-              <li><%= link_to "ログイン", new_user_session_path %></li>
+          <%# else %>
+              <!--<li><%#= link_to "サインイン", new_user_registration_path %></li>-->
+              <!--<li class="divider"></li>-->
+              <!--<li><%#= link_to "ログイン", new_user_session_path %></li>-->
           <% end %>
         </ul>
       </li>

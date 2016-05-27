@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  has_many :user_events,dependent: :delete_all
 
   validates_presence_of :e_date,:start_time,:end_time,:event_place
 

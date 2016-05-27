@@ -1,5 +1,8 @@
 $brand-primary: #532F8C;
 $brand-language: #B01302;
+$brand-ok: #4169E1;
+$brand-pend: #FF8C00;
+$brand-ng: #A52A2A;
 
 .jumbotron {
   background: $brand-primary;
@@ -11,6 +14,27 @@ $brand-language: #B01302;
     border-color: lighten($brand-primary, 20%);
     &:hover {
       background: lighten($brand-primary, 15%);
+    }
+  }
+  .btn-success {
+    background: lighten($brand-ok, 20%);
+    border-color: lighten($brand-ok, 20%);
+    &:hover {
+      background: lighten($brand-ok, 15%);
+    }
+  }
+  .btn-warning {
+    background: lighten($brand-pend, 20%);
+    border-color: lighten($brand-pend, 20%);
+    &:hover {
+      background: lighten($brand-pend, 15%);
+    }
+  }
+  .btn-danger {
+    background: lighten($brand-ng, 20%);
+    border-color: lighten($brand-ng, 20%);
+    &:hover {
+      background: lighten($brand-ng, 15%);
     }
   }
 
