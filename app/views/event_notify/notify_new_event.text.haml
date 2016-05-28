@@ -6,10 +6,10 @@
 
 武蔵野タイガースのスケジュールが更新されました。
 
-%ol
-  - @evs.each.with_index(1) do |ev,index|
-    %li
-      = "#{ev.e_date.to_s} #{ev.start_time}〜#{ev.start_time} :::#{ev.event_place}"
+- @evs.each.with_index(1) do |ev,index|
+  = "#{ev.e_date.to_s} #{ev.start_time}時〜#{ev.end_time} 時:::#{ev.event_place}"
+  ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+
 
 出欠席の連絡は下記からお願いいたします。
 

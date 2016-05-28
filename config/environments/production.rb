@@ -77,7 +77,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   HEROKU_SMTP_SETTINGS = {
-      :address => '182.48.47.131',
+      :address => 'smtp.sendgrid.net',
       :port => '587',
       :authentication => :plain,
       :user_name => ENV['SENDGRID_USERNAME'],

@@ -14,7 +14,7 @@
           .borderCard__form-item{style: "margin-left:10px;"}
             = @record.is_notify?
 
-%table.borderTable{style: "width:80%;margin:20px;"}
+%table.borderTable{style: "width:90%;margin:20px;"}
   %tr
     %th
     %th 出席者（○）
@@ -25,13 +25,13 @@
     %th
       = "メンバー"
     %td
-      = @event_joins[:ok]
+      = @event_joins[:ok].join("\n").html_safe
     %td
-      = @event_joins[:pending]
+      = @event_joins[:pending].join("\n")
     %td
-      = @event_joins[:ng]
+      = @event_joins[:ng].join("\n")
     %td
-      = @event_joins[:no]
+      = @event_joins[:no].join("<br/>").html_safe
   %tr
     %th
       = "人数合計"
@@ -43,3 +43,13 @@
       = @event_joins[:ng].size
     %td
       = @event_joins[:no].size
+
+
+= form_tag '/event/update_memo' do
+  .borderCard__form-item{style: "margin-left:10px;"}
+    = "メモ"
+    .borderCard__form-item.is-block-textarea-container
+      = text_area_tag "event[memo]", @record.memo, :size => "40x5"
+      = hidden_field_tag "id",@record.id
+    .borderCard__form-item{style: "margin-left:10px;"}
+      = submit_tag "更 新", class: "btn btn-primary btn-sm"

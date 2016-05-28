@@ -1,5 +1,5 @@
-$ ->
-
+#$ ->
+ready = ->
   #userIdを先にロードしてしまう
   userId = $('#user_id').val()
 
@@ -44,4 +44,6 @@ $ ->
           when "btn-danger"
             $(tr).find('.btn_stop').addClass(loadStatus)
 
+$(document).ready(ready)
+$(document).on('page:load',ready)
 
