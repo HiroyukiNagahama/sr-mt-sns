@@ -18,7 +18,7 @@
           %td
             = record.event_place
           %td
-            = link_to '詳細確認',{controller: :event,action: :show,id: record.id },include_blank: true
+            = link_to '詳細確認',{controller: :event,action: :show,id: record.id },class: "btn btn-sm btn-primary",include_blank: true
           %td
             - ue = UserEvent.select(:attendance_type).find_by(event_id: record.id,user_id: current_user.id)
             - if !ue
@@ -27,13 +27,13 @@
             -else
               %span
                 =hidden_field_tag(:ev,UserEvent::BTN[ue.attendance_type],class: "search_status")
-            %div.borderCard__form-item{style: "margin-left:20px;"}
+            %div.borderCard__form-item{style: "margin-left:5px;"}
               = submit_tag UserEvent::GO, class: "btn btn-sm is_click btn_go"
               = hidden_field_tag(:ev,UserEvent::STATUS_GO,class: "status")
-            %div.borderCard__form-item{style: "margin-left:20px;"}
+            %div.borderCard__form-item{style: "margin-left:5px;"}
               = submit_tag UserEvent::STOP, class: "btn btn-sm is_click btn_stop"
               = hidden_field_tag(:ev,UserEvent::STATUS_STOP,class: "status")
-            %div.borderCard__form-item{style: "margin-left:20px;"}
+            %div.borderCard__form-item{style: "margin-left:5px;"}
               = submit_tag UserEvent::PEND, class: "btn btn-sm is_click btn_pend"
               = hidden_field_tag(:ev,UserEvent::STATUS_PEND,class: "status")
 

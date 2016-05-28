@@ -21,6 +21,10 @@
             .borderCard__form-item{style: "margin-left:10px;"}
               = submit_tag "検 索", class: "btn btn-primary btn-sm"
 
+      -if current_user.manager
+        %br
+        =link_to("一括メール送信",{controller: :event, action: :notify_events}, class: "btn btn-default btn-primary",data: {confirm: "メールを一括送信します。よろしいですか？"})
+        = "メール通知していないスケジュールを一括して送信します"
 
 %table.borderTable{style: "width:90%;margin:20px;"}
   %tr
@@ -28,7 +32,6 @@
     %th 場所
     %th メモ
     %th 詳細
-    %th 全員に通知する
 
   - @records.each do |record|
     %tr
@@ -39,9 +42,10 @@
       %td
         = record.memo
       %td
-        = link_to '詳細確認',{action: :show,id: record.id },include_blank: true
-      %td
-        = link_to "メール通知#{'(未通知です！！！！！！！！)' if !record.notify_flag}",{action: :notify_events,id: record.id}
+        = link_to '詳細確認',{action: :show,id: record.id },class: "btn btn-sm btn-primary",include_blank: true
+        -if current_user.manager
+          - btn_str = (record.notify_flag ? "btn-warning" : "btn-danger" )
+          = link_to "メール通知#{'(未通知)' if !record.notify_flag}",{action: :notify_events,id: record.id},class: "btn btn-sm #{btn_str}",data: {confirm: "メールを送信します。よろしいですか？"}
 
 %div{style: "width:80%;margin:20px;"}
   =paginate @records,outer_window: 4,window: 4

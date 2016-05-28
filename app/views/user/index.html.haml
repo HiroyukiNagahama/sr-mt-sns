@@ -5,11 +5,10 @@
   %tr
     %th 名前
     %th email
-    %th 連絡
+    -#%th 連絡
     - if current_user.manager
       %th 最終ログイン日時
       %th 項目
-
 
   - @users.each do |user|
     %tr
@@ -17,15 +16,17 @@
         = user.name
       %td
         = user.email
-      %td
-        = link_to 'メール送信',{action: :to_mail,mail: user.email}
+      -#%td
+      -#  = link_to 'メール送信',{action: :to_mail,mail: user.email}
       -if current_user.manager
         %td
           = user.last_sign_in_at
         %td
-          - if current_user.manager
-            %div.borderCard__form-item{style: "margin-left:20px;"}
-              = link_to '編集',{action: :edit,id: user.id },include_blank: true
-            %div.borderCard__form-item{style: "margin-left:20px;"}
-              = link_to '削除',{action: :destroy_record,id: user.id },data: {confirm: "削除しますがよろしいでしょうか？"}
+          - if current_user.manager || current_user == user.id
+            %div.borderCard__form-item{style: "margin-left:5px;"}
+              = link_to '編集',{action: :edit,id: user.id },class: "btn btn-sm btn-warning",include_blank: true
+            %div.borderCard__form-item{style: "margin-left:5px;"}
+              = link_to '削除',{action: :destroy_record,id: user.id },class: "btn btn-sm btn-danger",data: {confirm: "削除しますがよろしいでしょうか？"}
+
+
 
