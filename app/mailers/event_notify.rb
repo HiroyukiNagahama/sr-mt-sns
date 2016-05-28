@@ -21,12 +21,12 @@ class EventNotify < ApplicationMailer
 
   def send_test
     set_mailer_option
-    mail(to: ["s62m02d05g@gmail.com","h1r0naga1987@gmail.com"], subject: 'テストメール')
+    mail(to: [OWNER_AD1_DEV,OWNER_AD2_DEV], subject: 'テストメール')
   end
 
   def send_test_heroku
     set_mailer_option
-    mail(to: ["s62m02d05g@gmail.com","h1r0naga1987@gmail.com"], subject: 'herokuテストメール')
+    mail(to: [ENV['OWNER_AD1'],ENV['OWNER_AD2']], subject: 'herokuテストメール')
   end
 
 end

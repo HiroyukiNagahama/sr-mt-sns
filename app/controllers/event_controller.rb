@@ -28,7 +28,7 @@ class EventController < ApplicationController
   def notify_events
     evs = params[:id] ? [set_record] : Event.future_events(false)
     #User.where().find_each do |user|
-    User.where(email: "h1r0naga1987@gmail.com").find_each do |user|
+    User.where(email: ENV['OWNER_AD2']).find_each do |user|
       EventNotify.notify_new_event(evs, user.email).deliver
     end
     redirect_to action: :index
