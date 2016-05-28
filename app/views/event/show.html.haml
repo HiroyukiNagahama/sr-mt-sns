@@ -46,10 +46,8 @@
 
 
 = form_tag '/event/update_memo' do
-  .borderCard__form-item{style: "margin-left:10px;"}
-    = "メモ"
-    .borderCard__form-item.is-block-textarea-container
-      = text_area_tag "event[memo]", @record.memo, :size => "40x5"
-      = hidden_field_tag "id",@record.id
-    .borderCard__form-item{style: "margin-left:10px;"}
-      = submit_tag "更 新", class: "btn btn-primary btn-sm"
+  .borderCard__form-item.is-block-textarea-container{style: "margin-left:20px;"}
+    = text_area_tag "event[memo]", @record.memo, :size => "40x5"
+    = hidden_field_tag "id",@record.id
+    %br
+    = submit_tag "更 新", class: "btn btn-primary btn-sm"

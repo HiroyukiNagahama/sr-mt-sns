@@ -18,21 +18,21 @@
     <% if user_signed_in? %>
     <ul class="nav navbar-nav">
       <li class="active">
-        <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+        <a href="/"><span class="glyphicon glyphicon-list-alt"></span> Home</a>
       </li>
       <% if current_user.manager %>
           <li class="active">
-            <a href="/event/create"><span class="glyphicon glyphicon-home"></span>イベント作成</a>
+            <a href="/event/create"><span class="glyphicon glyphicon-pencil"></span>イベント作成</a>
           </li>
           <li class="active">
-            <a href="/user/create"><span class="glyphicon glyphicon-home"></span>メンバー作成</a>
+            <a href="/user/create"><span class="glyphicon glyphicon-plus">メンバー作成</span></a>
           </li>
           <li class="active">
-            <a href="/user/index"><span class="glyphicon glyphicon-home"></span>メンバー一覧</a>
+            <a href="/user/index"><span class="	glyphicon glyphicon-user"></span>メンバー一覧</a>
           </li>
       <% end %>
       <li class="active">
-        <a href="/user_event/index?user_id=<%= current_user.id%>"><span class="glyphicon glyphicon-home"></span>出欠席</a>
+        <a href="/user_event/index?user_id=<%= current_user.id%>"><span class="glyphicon glyphicon-th-list"></span>出欠席</a>
       </li>
       <!--<li>-->
       <!--<a href="https://devcenter.heroku.com/articles/how-heroku-works"><span class="glyphicon glyphicon-user"></span>-->
