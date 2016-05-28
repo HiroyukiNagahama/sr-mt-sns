@@ -46,7 +46,7 @@ class EventController < ApplicationController
         EventNotify.notify_new_event(evs, user.email).deliver_now
       end
     else
-      User.all.find_each do |user|
+      User.where(active_flag: true).find_each do |user|
         EventNotify.notify_new_event(evs, user.email).deliver_now
       end
     end
