@@ -46,7 +46,7 @@
         -if current_user.manager
           - btn_str = (record.notify_flag ? "btn-warning" : "btn-danger" )
           = link_to "メール通知#{'(未通知)' if !record.notify_flag}",{action: :notify_events,id: record.id},class: "btn btn-sm #{btn_str}",data: {confirm: "メールを送信します。よろしいですか？"}
-          = link_to "スケジュール削除",{action: :set_record,id: record.id},style: "margin-left:20px;",class: "btn btn-sm btn-danger",data: {confirm: "削除しますよろしいですか？"}
+          = link_to "スケジュール削除",{action: :destroy_record,id: record.id},style: "margin-left:20px;",class: "btn btn-sm btn-danger",data: {confirm: "削除しますよろしいですか？"}
 
 %div{style: "width:80%;margin:20px;"}
   =paginate @records,outer_window: 4,window: 4
