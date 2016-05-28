@@ -8,10 +8,8 @@
       %tr
         %th 日時
         %th 場所
-        %th メモ
         %th 詳細
         %th 出欠席
-        %th 回答
       - @events.each do |record|
         %tr
           %td
@@ -20,10 +18,15 @@
           %td
             = record.event_place
           %td
-            = record.memo
+            = link_to '詳細確認',{controller: :event,action: :show,id: record.id },include_blank: true
           %td
-            = link_to '詳細確認',{action: :show,id: record.id },include_blank: true
-          %td
+            - ue = UserEvent.select(:attendance_type).find_by(event_id: record.id,user_id: current_user.id)
+            - if !ue
+              %span
+                = hidden_field_tag(:ev,nil,class: "search_status")
+            -else
+              %span
+                =hidden_field_tag(:ev,UserEvent::BTN[ue.attendance_type],class: "search_status")
             %div.borderCard__form-item{style: "margin-left:20px;"}
               = submit_tag UserEvent::GO, class: "btn btn-sm is_click btn_go"
               = hidden_field_tag(:ev,UserEvent::STATUS_GO,class: "status")
@@ -33,16 +36,7 @@
             %div.borderCard__form-item{style: "margin-left:20px;"}
               = submit_tag UserEvent::PEND, class: "btn btn-sm is_click btn_pend"
               = hidden_field_tag(:ev,UserEvent::STATUS_PEND,class: "status")
-          %td.attendance
-            - ue = UserEvent.select(:attendance_type).find_by(event_id: record.id,user_id: current_user.id)
-            - if !ue
-              ="未回答"
-              %span
-                = hidden_field_tag(:ev,nil,class: "search_status")
-            -else
-              =UserEvent::STATUS[ue.attendance_type]
-              %span
-                =hidden_field_tag(:ev,UserEvent::BTN[ue.attendance_type],class: "search_status")
+
 
 .row
   .col-xs-12

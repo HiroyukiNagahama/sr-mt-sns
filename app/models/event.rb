@@ -7,8 +7,9 @@ class Event < ActiveRecord::Base
   scope :find_place, -> place {where(arel_table[:event_place].matches("%#{place}%")) if place.present?}
   scope :find_notify, -> is_notify {where(notify_flag: is_notify) if [true,false,"true","false"].include?(is_notify)}
   scope :sort_desc, -> {order('e_date desc')}
+  scope :future_events,  -> notify {where("e_date >= ? and notify_flag = ?",Date.today,notify)}
 
-  paginates_per 30
+  paginates_per 20
 
   #表示日時
   def ev_date

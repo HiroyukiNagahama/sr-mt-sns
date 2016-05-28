@@ -1,4 +1,5 @@
 class UserEventController < ApplicationController
+  before_action :authenticate_user! ,except: [:submit_attendance]
 
   def index
     find_events
@@ -16,8 +17,7 @@ class UserEventController < ApplicationController
 
   private
   def find_events
-    @events = Event.where("e_date >= ? and notify_flag = ?",Date.today,false).order("e_date DESC").page(params[:page])
-    # @events = Event.all.page(params[:page])
+    @events = Event.future_events(true).order("e_date DESC").page(params[:page])
   end
 
   def find_record

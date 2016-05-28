@@ -2,7 +2,7 @@
   %h1 武蔵野タイガース：スケジュール
 .borderCards{style: "margin:20px;"}
   .row
-    .col-xs-8
+    .col-xs-12
       .borderCard
         %header.borderCard__header
           = form_tag '/event/index' do
@@ -22,12 +22,11 @@
               = submit_tag "検 索", class: "btn btn-primary btn-sm"
 
 
-%table.borderTable{style: "width:80%;margin:20px;"}
+%table.borderTable{style: "width:90%;margin:20px;"}
   %tr
     %th 日時
     %th 場所
     %th メモ
-    %th 通知
     %th 詳細
     %th 全員に通知する
 
@@ -40,10 +39,9 @@
       %td
         = record.memo
       %td
-        = record.is_notify?
-      %td
         = link_to '詳細確認',{action: :show,id: record.id },include_blank: true
       %td
-        = "メール通知"
+        = link_to "メール通知#{'(未通知です！！！！！！！！)' if !record.notify_flag}",{action: :notify_events,id: record.id}
 
-=paginate @records,outer_window: 4,window: 4
+%div{style: "width:80%;margin:20px;"}
+  =paginate @records,outer_window: 4,window: 4

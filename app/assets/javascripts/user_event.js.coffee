@@ -20,11 +20,11 @@ $ ->
     jqXHR.done (data, stat, xhr) ->
 #      console.log { done: stat, data: data, xhr: xhr }
       value = data.attendance_type
-      text = data.attendance_text
+#      text = data.attendance_text
       btn_msg = data.btn_msg
       $btnObj.closest('td').find('.btn').removeClass('btn-primary btn-warning btn-danger')
       $btnObj.addClass(btn_msg)
-      $btnObj.closest('tr').find('.attendance').text(text)
+#      $btnObj.closest('tr').find('.attendance').text(text)
 
     jqXHR.fail (xhr, stat, err) ->
       console.log { fail: stat, error: err, xhr: xhr }
