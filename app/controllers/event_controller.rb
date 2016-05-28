@@ -54,6 +54,16 @@ class EventController < ApplicationController
     redirect_to action: :index
   end
 
+  def destroy_record
+    e = set_record
+    if e.destroy
+      flash[:alert] = "削除しました"
+    else
+      flash[:alert] = '削除に失敗しました'
+    end
+    redirect_to action: :index
+  end
+
   def update_memo
     set_record
     @record.update(memo: params[:event][:memo])
