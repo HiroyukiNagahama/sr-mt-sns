@@ -7,15 +7,16 @@ class EventNotify < ApplicationMailer
   #
   def notify_new_event(evs,to)
     @evs = evs
+    set_mailer_option
     mail to: to,subject: "お知らせ[musashino-taigers]"#, x_msmail_priority: 'High'
   end
 
   #テスト用メソッド
   def self.do_test(heroku=false)
     if heroku
-      EventNotify.send_test_heroku.deliver
+      EventNotify.send_test_heroku.deliver_now
     else
-      EventNotify.send_test.deliver
+      EventNotify.send_test.deliver_now
     end
   end
 

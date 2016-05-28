@@ -43,11 +43,11 @@ class EventController < ApplicationController
     evs = params[:id] ? [set_record] : Event.future_events(false)
     if Rails.env.development?
       User.where(email: 's62m02d05g@gmail.com').find_each do |user|
-        EventNotify.notify_new_event(evs, user.email).deliver
+        EventNotify.notify_new_event(evs, user.email).deliver_now
       end
     else
       User.all.find_each do |user|
-        EventNotify.notify_new_event(evs, user.email).deliver
+        EventNotify.notify_new_event(evs, user.email).deliver_now
       end
     end
     evs.each{|e|e.update(notify_flag: true)} #２度目の送信も許可
