@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "event_info@fast-taiga-17355.herokuapp.com"
+  default from: "event_info@cryptic-gorge-56075.herokuapp.com"
   layout 'mailer'
 
   def set_mailer_option
