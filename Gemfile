@@ -60,3 +60,5 @@ gem 'migration_comments', '~> 0.3.2'
 #session_store
 gem 'activerecord-session_store'
 
+gem 'bootstrap-sass'
+

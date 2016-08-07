@@ -4,9 +4,9 @@ class UserEvent < ActiveRecord::Base
 
   paginates_per 3
 
-  GO="出陣"
-  PEND="燻り"
-  STOP="撤退"
+  GO="出席"
+  PEND="保留"
+  STOP="欠席"
   STATUS_GO = 1
   STATUS_PEND = 2
   STATUS_STOP = 3
