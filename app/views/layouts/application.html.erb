@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ruby Getting Started on Heroku</title>
+  <title>musashinoT</title>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -68,10 +68,6 @@
               <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
               <li class="divider"></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-          <%# else %>
-              <!--<li><%#= link_to "サインイン", new_user_registration_path %></li>-->
-              <!--<li class="divider"></li>-->
-              <!--<li><%#= link_to "ログイン", new_user_session_path %></li>-->
           <% end %>
         </ul>
       </li>

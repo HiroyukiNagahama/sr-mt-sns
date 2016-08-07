@@ -40,6 +40,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # config.assets.initialize_on_precompile = false
-  OWNER_AD1_DEV = 's62m02d05g@gmail.com'
+  OWNER_AD1_DEV = 'sr.m.tigers@gmail.com'
   OWNER_AD2_DEV = 'h1r0naga1987@gmail.com'
 end

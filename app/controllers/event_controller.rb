@@ -2,8 +2,6 @@ class EventController < ApplicationController
   before_action :authenticate_user!
   before_action :is_manager, only: [:create,:notify_events]
 
-
-
   def index
     find_records
   end
@@ -42,7 +40,7 @@ class EventController < ApplicationController
   def notify_events
     evs = params[:id] ? [set_record] : Event.future_events(false)
     if Rails.env.development?
-      User.where(email: 's62m02d05g@gmail.com').find_each do |user|
+      User.where(email: 'sr.m.tigers@gmail.com').find_each do |user|
         EventNotify.notify_new_event(evs, user.email).deliver_now
       end
     else
