@@ -1,0 +1,7 @@
+%h1
+CSV取り込み
+
+%div{style: "margin:10px;padding:10px;"}
+  = form_for :dump, :url => {:action => :import_csv} do |f|
+    = f.file_field :file
+    = submit_tag '取り込み'

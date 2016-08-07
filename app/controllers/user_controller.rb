@@ -49,6 +49,26 @@ class UserController < ApplicationController
     render '/home/index'
   end
 
+  def import_csv
+    if request.post?
+      require "csv"
+      require 'kconv'
+      alreadys = []
+      arr_of_arrs = CSV.parse(Kconv.toutf8(params[:dump][:file].read))
+      arr_of_arrs.each_with_index do |r,ind|
+        next if ind == 0
+        if User.exists?(email: r[2])
+          alreadys << r[1]
+          next
+        end
+        set_password = r[2].sub(/@.+/,'123456789')
+        user = User.new(code: r[0],name: r[1],email: r[2],password: set_password,password_confirmation: set_password,manager: r[3])
+        user.save!
+      end
+      flash[:error] = alreadys.unshift("下記該当者はすでに登録されています")
+    end
+  end
+
   private
   def find_records
     @users = User.all.order(:name)
