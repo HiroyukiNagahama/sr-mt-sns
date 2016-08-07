@@ -5,6 +5,7 @@
   %tr
     %th 名前
     %th email
+    %th コード
     -#%th 連絡
     - if current_user.manager
       %th 最終ログイン日時
@@ -16,6 +17,8 @@
         = user.name
       %td
         = user.email
+      %td
+        = user.code
       -#%td
       -#  = link_to 'メール送信',{action: :to_mail,mail: user.email}
       -if current_user.manager

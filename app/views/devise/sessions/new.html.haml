@@ -1,0 +1,21 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+%div.login
+  %div.heading
+    %h2 Sign in
+    - form action="#"
+      %div.input-group.input-group-lg
+        %span.input-group-addon
+          %i.fa.fa-user
+        = f.email_field :email, autofocus: true,placeholder: "E-mail",class: "form-control"
+      %div.input-group.input-group-lg
+        %span.input-group-addon
+          %i.fa.fa-lock
+        = f.password_field :password, autocomplete: "off",placeholder: "Password",class: "form-control"
+      - if devise_mapping.rememberable?
+        %div.field
+          = f.check_box :remember_me
+      %div.borderCard__form-item
+        %button.float.btn.btn-sm
+          Login
+
+<%#= render "devise/shared/links" %>

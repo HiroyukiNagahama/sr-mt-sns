@@ -16,9 +16,8 @@ class UserController < ApplicationController
 
   def save
     if params[:user][:id] != current_user.id && !current_user.manager
-      flash[:alert] = '他人の情報を書き換えないでください'
+      flash[:notice] = '他人の情報を書き換えないでください'
     end
-    p params
     user = User.find_or_initialize_by(id: params[:user][:id])
     if user.id && params[:user][:password].blank?
       user.attributes = user_params.delete_if{|key,value|key == "password"||key == "password_confirmation"}
