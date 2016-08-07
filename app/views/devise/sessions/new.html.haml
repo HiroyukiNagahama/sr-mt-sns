@@ -1,8 +1,7 @@
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-%div.login
-  %div.heading
-    %h2 Sign in
-    - form action="#"
+  %div.login
+    %div.heading
+      %h2 Sign in
       %div.input-group.input-group-lg
         %span.input-group-addon
           %i.fa.fa-user
@@ -14,8 +13,9 @@
       - if devise_mapping.rememberable?
         %div.field
           = f.check_box :remember_me
+          = "ログイン情報を記録しておく"
       %div.borderCard__form-item
         %button.float.btn.btn-sm
           Login
 
-<%#= render "devise/shared/links" %>
+-#= render "devise/shared/links"
